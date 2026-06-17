@@ -16,13 +16,11 @@ import {
   Smile,
   Star,
   UsersRound,
-  Wrench,
   X,
 } from "lucide-react";
 import { useState } from "react";
 import aboutImage from "./assets/dr-chaveiro-about.png";
 import carServiceImage from "./assets/carro.jfif";
-import codedKeyServiceImage from "./assets/chavecodifica.jfif";
 import keyCopyServiceImage from "./assets/copiadechaves.jfif";
 import heroImage from "./assets/dr-chaveiro-hero.png";
 import residentialServiceImage from "./assets/residencial.jfif";
@@ -60,19 +58,6 @@ const services = [
     icon: KeyRound,
     image: keyCopyServiceImage,
   },
-  {
-    title: "Chaves Codificadas",
-    text: "Programação de chaves codificadas e controles.",
-    icon: Wrench,
-    image: codedKeyServiceImage,
-  },
-  {
-    title: "Fechaduras Digitais",
-    text: "Instalação e manutenção de fechaduras eletrônicas.",
-    icon: LockKeyhole,
-    image:
-      "https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=900&q=85",
-  },
 ];
 
 const stats = [
@@ -90,7 +75,7 @@ const reasons = [
   },
   {
     title: "Tecnicos Especializados",
-    text: "Equipe preparada para serviços automotivos, residenciais e digitais.",
+    text: "Equipe preparada para serviços automotivos, residenciais e comerciais.",
     icon: UsersRound,
   },
   {
@@ -184,9 +169,6 @@ export default function App() {
 
       <main className="flex flex-col">
         <Hero />
-        <section className="order-2 bg-night px-5 py-5 md:hidden">
-          <WhatsAppButton className="w-full">Chamar no WhatsApp</WhatsAppButton>
-        </section>
         <Stats />
         <Services />
         <WhyChoose />
@@ -281,7 +263,7 @@ function Header() {
 }
 
 function Hero() {
-  const specialties = ["Carros", "Casas", "Empresas", "Chaves Codificadas", "Fechaduras Digitais"];
+  const specialties = ["Carros", "Casas", "Empresas"];
 
   return (
     <section
@@ -305,6 +287,15 @@ function Hero() {
           <p className="mt-6 max-w-xl text-lg font-semibold leading-8 text-white md:text-xl">
             Atendimento rápido em toda Região Metropolitana do Recife.
           </p>
+
+          <div className="mt-7 md:hidden">
+            <WhatsAppButton className="h-[72px] w-full animate-pulse rounded-2xl text-base shadow-[0_18px_42px_rgba(37,211,102,0.48)] ring-4 ring-whatsapp/20">
+              Chamar agora no WhatsApp
+            </WhatsAppButton>
+            <p className="mt-3 text-center text-sm font-semibold text-white/75">
+              Atendimento direto pelo WhatsApp, 24 horas.
+            </p>
+          </div>
 
           <div className="mt-7 grid grid-cols-1 gap-3 text-left sm:grid-cols-2">
             {specialties.map((item) => (
@@ -602,7 +593,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chamar DR Chaveiro no WhatsApp"
-      className="fixed bottom-2 right-3 z-50 grid h-12 w-12 place-items-center rounded-full bg-whatsapp text-white shadow-[0_16px_36px_rgba(37,211,102,0.42)] transition hover:-translate-y-1 hover:bg-[#1fb85a] focus:outline-none focus:ring-4 focus:ring-whatsapp/35 md:bottom-8 md:right-8 md:h-16 md:w-16"
+      className="fixed bottom-24 right-3 z-50 grid h-12 w-12 place-items-center rounded-full bg-whatsapp text-white shadow-[0_16px_36px_rgba(37,211,102,0.42)] transition hover:-translate-y-1 hover:bg-[#1fb85a] focus:outline-none focus:ring-4 focus:ring-whatsapp/35 md:bottom-8 md:right-8 md:h-16 md:w-16"
     >
       <WhatsAppIcon className="h-7 w-7 md:h-9 md:w-9" />
     </a>
