@@ -21,11 +21,14 @@ import {
 import { useState } from "react";
 import aboutImage from "./assets/dr-chaveiro-about.png";
 import carServiceImage from "./assets/carro.jfif";
-import keyCopyServiceImage from "./assets/copiadechaves.jfif";
+import lockInstallServiceImage from "./assets/fechadura.png";
+import keyCopyServiceImage from "./assets/chaves.png";
+import lockSecretServiceImage from "./assets/imagem.png";
 import heroImage from "./assets/dr-chaveiro-hero.png";
 import residentialServiceImage from "./assets/residencial.jfif";
 
 const phoneDisplay = "(81) 98300-8074";
+const phoneLink = "tel:+5581983008074";
 const whatsAppLink =
   "https://wa.me/5581983008074?text=Ol%C3%A1%2C%20preciso%20de%20um%20chaveiro%2024%20horas%20em%20Recife.";
 
@@ -57,6 +60,18 @@ const services = [
     text: "Cópia de chaves simples, tetra e codificadas.",
     icon: KeyRound,
     image: keyCopyServiceImage,
+  },
+  {
+    title: "Instalação de Fechaduras",
+    text: "Instalação e ajuste de fechaduras comuns, digitais e eletrônicas.",
+    icon: LockKeyhole,
+    image: lockInstallServiceImage,
+  },
+  {
+    title: "Troca de Segredo",
+    text: "Troca do miolo e segredo da fechadura para reforçar sua segurança.",
+    icon: ShieldCheck,
+    image: lockSecretServiceImage,
   },
 ];
 
@@ -112,7 +127,7 @@ function Logo() {
   return (
     <a href="#inicio" className="flex items-center gap-3" aria-label="DR Chaveiro">
       <span className="grid h-14 w-14 place-items-center rounded-2xl bg-gold text-night shadow-soft">
-        <LockKeyhole className="h-8 w-8" strokeWidth={2.8} />
+        <KeyRound className="h-8 w-8" strokeWidth={2.8} />
       </span>
       <span className="font-heading text-xl font-black leading-none tracking-normal">
         <span className="block text-gold">DR</span>
@@ -140,6 +155,24 @@ function WhatsAppButton({ children = "Falar no WhatsApp", className = "" }) {
     >
       <WhatsAppIcon />
       {children}
+    </a>
+  );
+}
+
+function CallCard({ className = "" }) {
+  return (
+    <a
+      href={phoneLink}
+      aria-label={`Ligar para DR Chaveiro no número ${phoneDisplay}`}
+      className={`group flex items-center gap-4 rounded-2xl border border-gold/45 bg-white/[0.06] p-4 text-left shadow-soft backdrop-blur transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-night focus:outline-none focus:ring-4 focus:ring-gold/30 ${className}`}
+    >
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gold text-night transition group-hover:bg-night group-hover:text-gold">
+        <Phone className="h-6 w-6" />
+      </span>
+      <span>
+        <span className="block font-heading text-base font-black uppercase">Ligar agora</span>
+        <span className="mt-1 block text-sm font-semibold opacity-85">{phoneDisplay}</span>
+      </span>
     </a>
   );
 }
@@ -263,7 +296,14 @@ function Header() {
 }
 
 function Hero() {
-  const specialties = ["Carros", "Casas", "Empresas"];
+  const specialties = [
+    "Carros",
+    "Casas",
+    "Empresas",
+    "Cópia de Chaves",
+    "Instalação de Fechaduras",
+    "Troca de Segredo",
+  ];
 
   return (
     <section
@@ -292,6 +332,7 @@ function Hero() {
             <WhatsAppButton className="h-[72px] w-full animate-pulse rounded-2xl text-base shadow-[0_18px_42px_rgba(37,211,102,0.48)] ring-4 ring-whatsapp/20">
               Chamar agora no WhatsApp
             </WhatsAppButton>
+            <CallCard className="mt-4 w-full text-white hover:text-night" />
             <p className="mt-3 text-center text-sm font-semibold text-white/75">
               Atendimento direto pelo WhatsApp, 24 horas.
             </p>
@@ -306,7 +347,10 @@ function Hero() {
             ))}
           </div>
 
-          <WhatsAppButton className="mt-9 hidden md:inline-flex">Falar no WhatsApp</WhatsAppButton>
+          <div className="mt-9 hidden max-w-sm md:block">
+            <WhatsAppButton>Falar no WhatsApp</WhatsAppButton>
+            <CallCard className="mt-4 text-white hover:text-night" />
+          </div>
         </div>
 
         <div className="relative hidden h-full items-center md:flex">
@@ -540,7 +584,7 @@ function Footer() {
         </div>
 
         <FooterColumn title="Serviços">
-          {services.slice(0, 5).map((service) => (
+          {services.map((service) => (
             <a key={service.title} href="#servicos">
               {service.title}
             </a>
