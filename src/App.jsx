@@ -637,9 +637,9 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chamar DR Chaveiro no WhatsApp"
-      className="fixed bottom-24 right-3 z-50 grid h-12 w-12 place-items-center rounded-full bg-whatsapp text-white shadow-[0_16px_36px_rgba(37,211,102,0.42)] transition hover:-translate-y-1 hover:bg-[#1fb85a] focus:outline-none focus:ring-4 focus:ring-whatsapp/35 md:bottom-8 md:right-8 md:h-16 md:w-16"
+      className="fixed bottom-5 right-4 z-50 grid h-16 w-16 place-items-center rounded-full bg-whatsapp text-white shadow-[0_16px_36px_rgba(37,211,102,0.42)] transition hover:-translate-y-1 hover:bg-[#1fb85a] focus:outline-none focus:ring-4 focus:ring-whatsapp/35 md:bottom-8 md:right-8 md:h-[72px] md:w-[72px]"
     >
-      <WhatsAppIcon className="h-7 w-7 md:h-9 md:w-9" />
+      <WhatsAppIcon className="h-9 w-9 md:h-10 md:w-10" />
     </a>
   );
 }
